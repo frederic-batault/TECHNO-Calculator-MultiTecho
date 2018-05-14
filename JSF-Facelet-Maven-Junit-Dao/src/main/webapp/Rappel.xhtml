@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+
+	<title>Rappel</title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<p:outputPanel deferred="true">
+					<p>La valeur en mémoire est :</p>
+					<h:outputText value="#{calculbean.resultatTexte}" />
+					<p>Elle sera utilisée dans le champs #{calculbean.i}</p>
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="0">
+						<p:selectOneRadio id="console2" value="#{calculbean.i}">
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+
+						</p:selectOneRadio>
+					</h:panelGrid>
+				</p:outputPanel>
+			</h:form>
+			<p:link outcome="Calculatrice" value="OK">
+				<f:param name="resultat" value="#{calculbean.resultatTexte}" />
+			</p:link>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
