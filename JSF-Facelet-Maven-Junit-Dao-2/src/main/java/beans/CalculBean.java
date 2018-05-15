@@ -64,10 +64,10 @@ public class CalculBean {
 		this.i = i;
 	}
 
-	// méthode de calcul
+	// methode de calcul
 	public Object calcul() {
 		String resultatTxt;
-		switch (this.refCalculDomaine.getOpérateur()) {
+		switch (this.refCalculDomaine.getOperateur()) {
 		case 1:
 			resultatTxt = this.refCalculService.addition(this.refCalculDomaine.getNombre1(),
 					this.refCalculDomaine.getNombre2());
@@ -92,10 +92,10 @@ public class CalculBean {
 		return "Reultat";
 	}
 
-	// méthode pour memoriser un résultat
+	// methode pour memoriser un resultat
 	public Object memoriser() {
 		double resultat;
-		if (this.refCalculDomaine.getResultatTexte().equals("erreur : division par zéro")) {
+		if (this.refCalculDomaine.getResultatTexte().equals("erreur : division par zero")) {
 			resultat = 0;
 		} else {
 			resultat = Double.valueOf(this.refCalculDomaine.getResultatTexte());
@@ -115,16 +115,16 @@ public class CalculBean {
 	public void saveMessageOK() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		context.addMessage(null, new FacesMessage("Enregistré", "valeur: " + this.refMemoire.getMemoireTexte()));
+		context.addMessage(null, new FacesMessage("Enregistre", "valeur: " + this.refMemoire.getMemoireTexte()));
 	}
 
 	public void saveMessageKO() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		context.addMessage(null, new FacesMessage("Erreur : enregistrement échoué"));
+		context.addMessage(null, new FacesMessage("Erreur : enregistrement echoue"));
 	}
 
-	// méthode pour afficher la memoire dans le champ i
+	// methode pour afficher la memoire dans le champ i
 	public Object afficherMemoire() {
 
 		Memoire refMem = refMemoireService.afficherMemoire();

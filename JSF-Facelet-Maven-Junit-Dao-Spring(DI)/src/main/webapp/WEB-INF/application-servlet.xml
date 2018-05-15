@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- Activation du scan des packages pour analyse des classes annotées -->
+	
+	<context:component-scan base-package="service" />
+
+	<!-- Bean DAO -->
+	<bean id="memoireDao" class="dao.MemoireDao">
+	</bean>
+	<!-- Beans Service -->
+	<bean id="calculService" class="service.CalculService">
+	</bean>
+	<bean id="memoireService" class="service.MemoireService">
+	</bean>
+	<!-- Beans domaine -->
+	<bean id="calculDomaine" class="domaine.CalculDomaine">
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="int" value="1" />
+		<constructor-arg type="String" value="0" />
+	</bean>
+	<bean id="memoire" class="domaine.Memoire">
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="String" value="0" />
+	</bean>
+
+
+</beans>
