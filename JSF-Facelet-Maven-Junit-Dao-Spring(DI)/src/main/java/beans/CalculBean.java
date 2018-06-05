@@ -1,9 +1,8 @@
 package beans;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +13,19 @@ import service.CalculService;
 import service.MemoireService;
 
 @ManagedBean(name = "calculbean")
-@SessionScoped
+@ApplicationScoped
 public class CalculBean {
 
-	
-	private CalculDomaine refCalculDomaine = new CalculDomaine(0,0,1,"0");
-	
-	private Memoire refMemoire= new Memoire(0,"0");
-	
+	private CalculDomaine refCalculDomaine = new CalculDomaine(0, 0, 1, "0");
+
+	private Memoire refMemoire = new Memoire(0, "0");
+
 	@Autowired
 	private CalculService refCalculService;
-	
+
 	@Autowired
 	private MemoireService refMemoireService;
-	
+
 	private int i;
 
 	// Constructeurs
