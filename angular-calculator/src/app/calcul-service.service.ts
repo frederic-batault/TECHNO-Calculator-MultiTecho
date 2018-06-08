@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
-
+import { Calcul } from '../calc/Calcul';
 @Injectable({
   providedIn: 'root'
 })
 export class CalculService {
 
-calculer (Calcul calculIn): Calcul {
-Calcul calculOut = new Calcul(calculIn.nombre1,calculIn.operateur,calculIn.nombre2,42,"42");
-return calculOut;
-}
+	calculer (calculIn: Calcul): Calcul {
 
-  constructor() { }
+		calculOut: Calcul = {
+			nombre1: calculIn.nombre1,
+			nombre2: calculIn.nombre2,
+			operateur: calculIn.operateur,
+			resultat:42,
+			resultatTexte: '42',
+		};
+
+		return calculOut;
+	}
+
+	constructor() { }
 }
