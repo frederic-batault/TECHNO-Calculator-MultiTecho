@@ -1,0 +1,45 @@
+.container {
+	background-color: RGB(96,96,96);
+	color: RGB(255,255,192);
+	border-radius: 20px;
+	width: 200px;
+	height: 100px;
+	padding: 10px;
+
+}
+
+button{
+	background-color: RGB(32,0,128);
+	color: RGB(255,255,192);
+	border-style: none;
+	border-radius: 5px;
+	width: 200px;
+	position: relative;
+	left: 0px;
+	
+}
+
+.resultat{
+	background-color: RGB(32,0,128);
+	color: RGB(255,255,192);
+	border-style: none;
+	border-radius: 5px;
+	width: 200px;
+	position: relative;
+	left: 0px;
+	
+}
+
+input,select{
+	background-color: RGB(32,0,128);
+	color: RGB(255,255,192);
+	border-style: none;
+	border-radius: 5px;
+	width: 100px;
+	position: absolute;
+	left: 110px;
+}
+
+label {
+	witht: 100px;
+}

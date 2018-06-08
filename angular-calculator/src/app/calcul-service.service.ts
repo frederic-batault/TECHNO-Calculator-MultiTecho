@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Calcul } from '../calc/Calcul';
+
 @Injectable({
   providedIn: 'root'
 })
