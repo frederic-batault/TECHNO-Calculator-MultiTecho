@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Calcul } from '../calc/Calcul';
-import { CalculService} from '../calcul-service.service';
+import { CalculService} from '../calc/calcul-service.service';
 @Component({
   selector: 'app-calc',
   template:`<button (click)="calculer()">=</button>`,

@@ -7,9 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import domaine.CalculDomaine;
-import domaine.Memoire;
 import service.CalculService;
-import service.MemoireService;
 
 @Path("/calcul")
 public class CalculWS {

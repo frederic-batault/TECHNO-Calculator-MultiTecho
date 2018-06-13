@@ -3,43 +3,57 @@
 	color: RGB(255,255,192);
 	border-radius: 20px;
 	width: 200px;
-	height: 100px;
+	height: 110px;
 	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
+	}
 
+.entree {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
+	height: 60px;	
 }
-
-button{
+	
+input,select, button, .resultat {
+	display: inline-flex;
+	margin-top: 1px;
 	background-color: RGB(32,0,128);
 	color: RGB(255,255,192);
-	border-style: none;
+	border-style: solid, 1px;
+	border-color: RGB(16,0,64);
 	border-radius: 5px;
-	width: 200px;
-	position: relative;
-	left: 0px;
+	height: 20px;
 	
 }
 
-.resultat{
-	background-color: RGB(32,0,128);
-	color: RGB(255,255,192);
-	border-style: none;
-	border-radius: 5px;
-	width: 200px;
-	position: relative;
-	left: 0px;
-	
-}
+
 
 input,select{
-	background-color: RGB(32,0,128);
-	color: RGB(255,255,192);
-	border-style: none;
-	border-radius: 5px;
 	width: 100px;
 	position: absolute;
-	left: 110px;
+	left: 90px;
+	top: 0px;
+}
+
+button, .resultat {
+	width: 200px;
+	position: relative;
+	left: 0px;
+	flex-direction: line;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
 }
 
 label {
-	witht: 100px;
+	width: 100px;
+	position: relative;
+	left: 5px;
 }

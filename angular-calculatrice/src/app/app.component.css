@@ -8,23 +8,35 @@ div {
 	border-color: RGB(0,0,0);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	flex-wrap: nowrap;
 }
+
 h1 {
 	display: inline-flex;
 	color: RGB(255,255,255);
 	order: 1;
+	margin: 10px;
 }
+
 p {
 	display: inline-flex;
 	color: RGB(255,255,255);
-	order: 3;
+	order: 4;
+	margin: 10px;
 }
 
 app-calc {
 	display: inline-flex;
 	order: 2;
+	margin: 10px;
+	
+}
+
+app-mem {
+	display: inline-flex;
+	order: 3;
+	margin: 10px;
 }
 	
