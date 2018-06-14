@@ -14,7 +14,8 @@ export class CalculService {
 	
 	
 	calculer (calcul: Calcul): Calcul {
-		getCalc().subscribe((data: Calcul) => calculWS = {calculGetUrl: data['calculGetUrl']});
+		observ = getCalc();
+		observ.subscribe((data: Calcul) => calculWS);
 		calcul.resultatTexte = calculWS.resultatTexte;
 		
 		return calcul;
