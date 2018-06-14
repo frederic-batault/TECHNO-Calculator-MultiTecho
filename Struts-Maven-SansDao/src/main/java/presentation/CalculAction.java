@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.util.PerformanceSensitive;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.ApplicationScope;
 
 import domaine.CalculDomaine;
 import domaine.Memoire;
@@ -13,23 +11,20 @@ import domaine.Operateur;
 import service.CalculService;
 import service.MemoireService;
 
-@ApplicationScope
 public class CalculAction {
 
-	private CalculDomaine refCalculDomaine= new CalculDomaine(0, 1, 0, 0, "0");
+	private CalculDomaine refCalculDomaine;
 
-	@Autowired
-	private CalculService refCalculService;
+	private CalculService refCalculService = new CalculService();
 
 	private List<Operateur> operateurs;
 
-	private Memoire refMemoire = new Memoire(0, "0");
+	private Memoire refMemoire;
 
-	@Autowired
-	private MemoireService refMemoireService;
+	private MemoireService refMemoireService = new MemoireService();
 
-	private int i = 1;
-	
+	private int i =1;
+
 	// Constructeurs
 
 	public CalculAction(CalculDomaine refCalculDomaine, CalculService refCalculService, List<Operateur> operateurs,
@@ -41,7 +36,7 @@ public class CalculAction {
 		this.refMemoire = refMemoire;
 		this.refMemoireService = refMemoireService;
 		this.i = i;
-
+		
 	}
 
 	public CalculAction() {
@@ -99,9 +94,10 @@ public class CalculAction {
 	}
 
 	// methode de preparation des champs
-
-	public String demarrer() {
-		
+	
+	public String init() {
+		this.refMemoire= new Memoire(0, "0");
+		this.refCalculDomaine= new CalculDomaine(0, 1, 0, 0, "0");
 		// construction de la liste des operateurs proposes
 		this.operateurs = new ArrayList<Operateur>();
 		operateurs.add(new Operateur(1, "+"));
@@ -109,10 +105,9 @@ public class CalculAction {
 		operateurs.add(new Operateur(3, "*"));
 		operateurs.add(new Operateur(4, "/"));
 		return "success";
-
+		
 	}
-
-
+	
 	// methode de calcul
 	public String calcul() {
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
