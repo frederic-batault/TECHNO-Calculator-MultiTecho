@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Calcul } from '../calc/Calcul';
-import { HttpClient} from '@angular/common/http';
-
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculService {
 
-	private calculGetUrl = 'localhost:8080/WebSerice-Maven-Dao/rest/calcul/get';
-	private calculPutUrl = 'localhost:8080/WebSerice-Maven-Dao/rest/calcul/put';
-
+	private calculGetUrl = 'http://localhost:8080/WebSerice-Maven-Dao-Spring/calcul/get';
+	private calculPutUrl = 'http://localhost:8080/WebSerice-Maven-Dao-Spring/calcul/put';
+	private headers: HttpHeaders;
 	
-	
-	calculer (calcul: Calcul): Calcul {
-		observ = getCalc();
-		observ.subscribe((data: Calcul) => calculWS);
-		calcul.resultatTexte = calculWS.resultatTexte;
+	private calculRetour = new Calcul();
 		
-		return calcul;
+	calculer (calcul: Calcul): Calcul {
+		
+		
+		
+		
+		this.http.put<Calcul>(this.calculPutUrl, calcul, { headers: this.headers}).subscribe(data => {console.log(data);});
+		
+		
+		return this.calculRetour
+		
 	}
 	
-	getCalc(){
-		return this.http.get<Calcul>(this.calculGetUrl);
-	}
-	
-	
-
-	constructor(private http HttpClient) { }
+	constructor(private http: HttpClient) {this.headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});}
 }
