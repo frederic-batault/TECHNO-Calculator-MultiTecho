@@ -2,10 +2,8 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.ApplicationScope;
+
 
 import domaine.CalculDomaine;
 import domaine.Memoire;
@@ -13,23 +11,24 @@ import domaine.Operateur;
 import service.CalculService;
 import service.MemoireService;
 
-@ApplicationScope
 public class CalculAction {
 
-	private CalculDomaine refCalculDomaine= new CalculDomaine(0, 1, 0, 0, "0");
+	@Autowired
+	private CalculDomaine refCalculDomaine;
 
 	@Autowired
 	private CalculService refCalculService;
 
 	private List<Operateur> operateurs;
 
-	private Memoire refMemoire = new Memoire(0, "0");
+	@Autowired
+	private Memoire refMemoire;
 
 	@Autowired
 	private MemoireService refMemoireService;
 
 	private int i = 1;
-	
+
 	// Constructeurs
 
 	public CalculAction(CalculDomaine refCalculDomaine, CalculService refCalculService, List<Operateur> operateurs,
@@ -101,20 +100,21 @@ public class CalculAction {
 	// methode de preparation des champs
 
 	public String demarrer() {
-		
+
 		// construction de la liste des operateurs proposes
 		this.operateurs = new ArrayList<Operateur>();
-		operateurs.add(new Operateur(1, "+"));
-		operateurs.add(new Operateur(2, "-"));
-		operateurs.add(new Operateur(3, "*"));
-		operateurs.add(new Operateur(4, "/"));
+		this.operateurs.add(new Operateur(1, "+"));
+		this.operateurs.add(new Operateur(2, "-"));
+		this.operateurs.add(new Operateur(3, "*"));
+		this.operateurs.add(new Operateur(4, "/"));
+		this.refCalculDomaine.setResultatTexte("resultat");
 		return "success";
 
 	}
 
-
 	// methode de calcul
 	public String calcul() {
+		demarrer();
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
 		this.refCalculDomaine.setResultat(retour.getResultat());
 		this.refCalculDomaine.setResultatTexte(retour.getResultatTexte());
@@ -143,7 +143,7 @@ public class CalculAction {
 
 	// methode pour afficher la memoire dans le champ i
 	public String afficherMemoire() {
-
+		demarrer();
 		Memoire refMem = refMemoireService.afficherMemoire();
 		double resultat = refMem.getMemoire();
 		switch (this.i) {
