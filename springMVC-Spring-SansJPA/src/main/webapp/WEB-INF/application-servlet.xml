@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+       ">
+	<!-- Activation du scan des packages pour analyse des classes annotées -->
+	<context:component-scan
+		base-package="controller" />
+	<context:component-scan base-package="service" />
+	
+	<!-- Cette configuration permet de mettre en place automatiquement plusieurs 
+		bean Spring importants (plus d'infos : https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config-enable) -->
+	<mvc:annotation-driven />
+	<!-- Configuration de pattern d'URL qui ne doivent pas activer DispatcherServlet 
+		de Spring. Ces URL correspondent à un accès à des ressources statiques. -->
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
+
+	<!-- Beans métier basiques -->
+	<bean id="calculDomaine" class="domaine.CalculDomaine">
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="int" value="1" />
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="String" value="0" />
+	</bean>
+	
+	<!-- Bean MemoireService -->
+	<bean id="memoireService" class="service.MemoireService">
+	</bean>
+
+	<!-- Bean CalculService -->
+	<bean id="calculService" class="service.CalculService">
+	</bean>
+
+	<!-- Bean MemoireDao -->
+	<bean id="memoireDao" class="dao.MemoireDao">
+	</bean>
+
+	<bean id="memoire" class="domaine.Memoire">
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="String" value="0" />
+	</bean>
+
+	<!-- Bean de configuration Spring : Objet permettant de résoudre les noms 
+		de vues (ModelAndView) en page JSP -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+
+</beans>
