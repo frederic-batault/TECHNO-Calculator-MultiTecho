@@ -2,7 +2,7 @@ package service;
 
 import domaine.CalculDomaine;
 
-
+// classe de calcul simple
 public class CalculService {
 
 	public CalculDomaine choixOperateur(CalculDomaine calculDomaine) {
@@ -63,7 +63,7 @@ public class CalculService {
 		String quotientTexte;
 		if(calculDomaine.getNombre2()==0) {
 			retourD.setResultat(0);
-			retourD.setResutatTexte("erreur : div/0");
+			retourD.setResutatTexte("erreur : div/0 (simple)");
 		}
 		else {
 			quotient = calculDomaine.getNombre1()/calculDomaine.getNombre2();

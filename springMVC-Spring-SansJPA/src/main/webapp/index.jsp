@@ -9,6 +9,6 @@
 </head>
 <body>
 
-	<c:redirect url="/calculatrice.html" />
+	<c:redirect url="/calculatrice.blabla" />
 </body>
 </html>

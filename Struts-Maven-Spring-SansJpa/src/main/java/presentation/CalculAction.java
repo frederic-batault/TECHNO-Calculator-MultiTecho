@@ -28,7 +28,7 @@ public class CalculAction {
 	private MemoireService refMemoireService;
 
 	private int i = 1;
-
+	
 	// Constructeurs
 
 	public CalculAction(CalculDomaine refCalculDomaine, CalculService refCalculService, List<Operateur> operateurs,
@@ -107,7 +107,7 @@ public class CalculAction {
 		this.operateurs.add(new Operateur(2, "-"));
 		this.operateurs.add(new Operateur(3, "*"));
 		this.operateurs.add(new Operateur(4, "/"));
-		this.refCalculDomaine.setResultatTexte("resultat");
+		
 		return "success";
 
 	}

@@ -2,7 +2,9 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,13 +52,11 @@ public class IndexController {
 		super();
 	}
 
-	@RequestMapping(path="/", method = RequestMethod.GET)
-	ModelAndView displayIndex() {
-		ModelAndView monModelAndView = new ModelAndView("calculatrice");
-		return monModelAndView;
-	}
+
+
 	
-	@RequestMapping(path = "/calculatrice", method = RequestMethod.POST)
+
+	@PostMapping("/calculatrice")
 	public ModelAndView calculer(@ModelAttribute CalculDomaine calculAller) {
 		CalculDomaine calculRetour = this.calculservice.choixOperateur(calculAller);
 		this.calculDomaine = calculRetour;

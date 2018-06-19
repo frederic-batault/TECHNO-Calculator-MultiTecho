@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import domaine.CalculDomaine;
-import service.CalculService;
+import service.ICalculService;
 
 @RestController
 @RequestMapping("/calcul")
 public class CalculWS {
 
 	@Autowired
-	private CalculService calculService;
+	private ICalculService calculService;
 
 	@PutMapping("/put")
 	public CalculDomaine calculWS(@RequestBody CalculDomaine calculAller) {

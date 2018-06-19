@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <title>Calculatrice</title>
 <s:head />
 </head>
@@ -13,21 +14,22 @@
 		<div class="titre">
 			<h1>Calculatrice</h1>
 		</div>
-		<div class="calcul">
+		<div class="entree">
 			<s:form action="calculer">
 				<s:textfield key="calculAction.refCalculDomaine.nombre1"
 					label="nombre1" />
-				<s:select key="calculAction.refCalculDomaine.operateur" list="operateurs"
-					listKey="code" listValue="symbole" label="operation" />
+				<s:select key="calculAction.refCalculDomaine.operateur"
+					list="operateurs" listKey="code" listValue="symbole"
+					label="operation" />
 				<s:textfield key="calculAction.refCalculDomaine.nombre2"
 					label="nombre2" />
-				<s:submit value="="/>
-				
+				<s:submit value="=" />
+
 			</s:form>
-			
+
 		</div>
 		<div class="resultat">
-			<h2><s:property value="calculAction.refCalculDomaine.resultatTexte" /></h2>
+			<s:property value="refCalculDomaine.resultatTexte" />
 		</div>
 		<div class="memoire">
 			<s:form action="memoriser">
