@@ -8,7 +8,7 @@ public class CalculDomaine {
 	private int operateur;
 	private double nombre2;
 	private double resultat;
-	private String resutatTexte;
+	private String resultatTexte;
 
 	public double getNombre1() {
 		return nombre1;
@@ -42,21 +42,21 @@ public class CalculDomaine {
 		this.resultat = resultat;
 	}
 
-	public String getResutatTexte() {
-		return resutatTexte;
+	public String getResultatTexte() {
+		return resultatTexte;
 	}
 
-	public void setResutatTexte(String resutatTexte) {
-		this.resutatTexte = resutatTexte;
+	public void setResultatTexte(String resultatTexte) {
+		this.resultatTexte = resultatTexte;
 	}
 
-	public CalculDomaine(double nombre1, int operateur, double nombre2, double resultat, String resutatTexte) {
+	public CalculDomaine(double nombre1, int operateur, double nombre2, double resultat, String resultatTexte) {
 		super();
 		this.nombre1 = nombre1;
 		this.operateur = operateur;
 		this.nombre2 = nombre2;
 		this.resultat = resultat;
-		this.resutatTexte = resutatTexte;
+		this.resultatTexte = resultatTexte;
 	}
 
 	public CalculDomaine() {

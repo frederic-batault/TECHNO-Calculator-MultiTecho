@@ -6,28 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Calculatrice</title>
+<link rel="stylesheet" href="css/calculatrice.css">
 </head>
 <body>
-	<h1>Calculatrice</h1>
-	<div class="calcul">
-		<form method="post">
-			<div class="form-group">
-				<label for="nb1">nombre 1:</label> <input id="nb1" name="nombre1"
-					class="form-control" />
-			</div>
-			<div class="form-group">
-				<label for="ope">operateur:</label> <input id="ope" name="operateur"
-					class="form-control" />
-			</div>
-			<div class="form-group">
-				<label for="nb1">nombre 2:</label> <input id="nb2" name="nombre2"
-					class="form-control" />
-			</div>
-			<button>=</button>
-		</form>
-		<p>${calculDomaine.resultatTexte}</p>
+	<div class="container">
+		<h1>Calculatrice</h1>
+		<jsp:include page="calcul.jsp"></jsp:include>
+		<jsp:include page="memoire.jsp"></jsp:include>
+		<jsp:include page="message.jsp"></jsp:include>
 	</div>
-
-
 </body>
 </html>

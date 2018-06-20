@@ -35,7 +35,7 @@ public class CalculService {
 		double somme = calculDomaine.getNombre1() + calculDomaine.getNombre2();
 		String sommeTexte = Double.toString(somme);
 		retourA.setResultat(somme);
-		retourA.setResutatTexte(sommeTexte);
+		retourA.setResultatTexte(sommeTexte);
 		return retourA;
 	}
 
@@ -44,7 +44,7 @@ public class CalculService {
 		double difference = calculDomaine.getNombre1() - calculDomaine.getNombre2();
 		String differenceTexte = Double.toString(difference);
 		retourS.setResultat(difference);
-		retourS.setResutatTexte(differenceTexte);
+		retourS.setResultatTexte(differenceTexte);
 		return retourS;
 	}
 
@@ -53,7 +53,7 @@ public class CalculService {
 		double produit = calculDomaine.getNombre1() * calculDomaine.getNombre2();
 		String produitTexte = Double.toString(produit);
 		retourM.setResultat(produit);
-		retourM.setResutatTexte(produitTexte);
+		retourM.setResultatTexte(produitTexte);
 		return retourM;
 	}
 
@@ -63,13 +63,13 @@ public class CalculService {
 		String quotientTexte;
 		if(calculDomaine.getNombre2()==0) {
 			retourD.setResultat(0);
-			retourD.setResutatTexte("erreur : div/0");
+			retourD.setResultatTexte("erreur : div/0");
 		}
 		else {
 			quotient = calculDomaine.getNombre1()/calculDomaine.getNombre2();
 			quotientTexte = Double.toString(quotient);
 			retourD.setResultat(quotient);
-			retourD.setResutatTexte(quotientTexte);
+			retourD.setResultatTexte(quotientTexte);
 		}
 			return retourD;	
 }
