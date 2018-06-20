@@ -27,7 +27,7 @@
 				</h:panelGrid>
 				<p:inputText value="#{calculbean.nombre2}" required="true"
 					id="nombre2" />
-				<p:commandButton value="=" action="#{calculbean.calcul}" />
+				<p:commandButton value="=" action="#{calculbean.calcul()}" />
 			</h:form>
 			<h:outputText value="#{calculbean.resultatTexte}" />
 		</ui:define>
