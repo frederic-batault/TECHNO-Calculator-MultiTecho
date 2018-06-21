@@ -25,7 +25,7 @@ les traitements doivent être effectués par un web-service
 - "SpringMVC-Spring-SansJPA"
 application avec SpringMVC en front, SpringCore pour la couche de service et les beans
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
-> blocage: l'affichage (EL) des messages ne fonctionne pas
+> fonctionelle
 
 - "Struts-Maven-Spring-SansJPA"
 application avec Struts en front, SpringCore pour la couche de service et les beans

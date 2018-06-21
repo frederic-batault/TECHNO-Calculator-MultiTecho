@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import domaine.CalculDomaine;
 import domaine.Memoire;
-import domaine.Message;
 import service.CalculService;
 import service.MemoireService;
 
@@ -28,8 +27,6 @@ public class IndexController {
 
 	private Memoire memoireDomaine;
 	
-	private Message messageMem;
-
 	public CalculDomaine getCalculDomaine() {
 		return calculDomaine;
 	}
@@ -54,21 +51,13 @@ public class IndexController {
 		this.calculService = calculService;
 	}
 
-	public Message getMessageMem() {
-		return messageMem;
-	}
+	
 
-	public void setMessageMem(Message messageMem) {
-		this.messageMem = messageMem;
-	}
-
-
-
-	public IndexController(CalculDomaine calculDomaine, Memoire memoireDomaine,	Message messageMem) {
+	public IndexController(CalculDomaine calculDomaine, Memoire memoireDomaine) {
 		super();
 		this.calculDomaine = calculDomaine;
 		this.memoireDomaine = memoireDomaine;
-		this.messageMem = messageMem;
+		
 	}
 
 	public IndexController() {
@@ -77,10 +66,8 @@ public class IndexController {
 
 	@RequestMapping(path = "/calculatrice", method = RequestMethod.GET)
 	public ModelAndView start() {
-		this.messageMem = new Message("Bienvenue");
 		this.calculDomaine = new CalculDomaine(0,1,0,0,"0");
 		ModelAndView mavStart = new ModelAndView("calculatrice");
-		mavStart.addObject(this.messageMem);
 		mavStart.addObject(this.calculDomaine);
 		return mavStart;
 	}
@@ -103,11 +90,16 @@ public class IndexController {
 	@PostMapping("/mem")
 	public ModelAndView memoriser() {
 		this.memoireDomaine = new Memoire(this.calculDomaine.getResultat(),this.calculDomaine.getResultatTexte());
-		this.memoireService.memoriser(this.memoireDomaine);
-		this.messageMem.setMessage("memorise : "+this.memoireDomaine.getMemoireTexte());
+		boolean mem = this.memoireService.memoriser(this.memoireDomaine);
+		if (mem == true) {
+			this.calculDomaine.setResultatTexte("mem :"+this.memoireDomaine.getMemoireTexte());
+		}
+		else {
+			this.calculDomaine.setResultatTexte("erreur mem");
+		}
 		ModelAndView mavMem = new ModelAndView("calculatrice");
-		mavMem.addObject(this.messageMem);
 		mavMem.addObject(this.memoireDomaine);
+		mavMem.addObject(this.calculDomaine);
 		return mavMem;
 	}
 	
@@ -116,10 +108,11 @@ public class IndexController {
 	@GetMapping("/aff")
 	public ModelAndView afficher() {
 		this.memoireDomaine = this.memoireService.afficherMemoire();
-		this.messageMem.setMessage("recupere : "+this.memoireDomaine.getMemoireTexte());
+		this.calculDomaine.setNombre1(this.memoireDomaine.getMemoire());
+		this.calculDomaine.setNombre2(this.memoireDomaine.getMemoire());
 		ModelAndView mavAff = new ModelAndView("calculatrice");
-		mavAff.addObject(this.messageMem);
 		mavAff.addObject(this.memoireDomaine);
+		mavAff.addObject(this.calculDomaine);
 		return mavAff;
 	}
 }

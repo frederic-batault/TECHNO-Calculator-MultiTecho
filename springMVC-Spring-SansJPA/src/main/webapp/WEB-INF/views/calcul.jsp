@@ -2,7 +2,7 @@
 	<form method="post" action="calc">
 		
 			<label for="nb1">nombre 1:</label> <input id="nb1" name="nombre1"
-				class="form-control" />
+				class="form-control" value="${calculDomaine.nombre1}"/>
 		
 		
 			<label>operation : <select id="ope" name="operateur">
@@ -15,7 +15,7 @@
 		
 		
 			<label for="nb1">nombre 2:</label> <input id="nb2" name="nombre2"
-				class="form-control" />
+				class="form-control" value="${calculDomaine.nombre2}"/>
 		
 		<button>=</button>
 		<label for="res">resultat :</label> <p id="res">${calculDomaine.resultatTexte}</p>

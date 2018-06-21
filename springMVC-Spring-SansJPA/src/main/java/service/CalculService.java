@@ -2,7 +2,6 @@ package service;
 
 import domaine.CalculDomaine;
 
-
 public class CalculService {
 
 	public CalculDomaine choixOperateur(CalculDomaine calculDomaine) {
@@ -31,46 +30,34 @@ public class CalculService {
 	}
 
 	public CalculDomaine addition(CalculDomaine calculDomaine) {
-		CalculDomaine retourA = new CalculDomaine();
-		double somme = calculDomaine.getNombre1() + calculDomaine.getNombre2();
-		String sommeTexte = Double.toString(somme);
-		retourA.setResultat(somme);
-		retourA.setResultatTexte(sommeTexte);
-		return retourA;
+		calculDomaine.setResultat(calculDomaine.getNombre1() + calculDomaine.getNombre2());
+		calculDomaine.setResultatTexte(Double.toString(calculDomaine.getResultat()));
+		return calculDomaine;
 	}
 
 	public CalculDomaine soustraction(CalculDomaine calculDomaine) {
-		CalculDomaine retourS = new CalculDomaine();
-		double difference = calculDomaine.getNombre1() - calculDomaine.getNombre2();
-		String differenceTexte = Double.toString(difference);
-		retourS.setResultat(difference);
-		retourS.setResultatTexte(differenceTexte);
-		return retourS;
+		calculDomaine.setResultat(calculDomaine.getNombre1() - calculDomaine.getNombre2());
+		calculDomaine.setResultatTexte(Double.toString(calculDomaine.getResultat()));
+		return calculDomaine;
 	}
 
 	public CalculDomaine multiplication(CalculDomaine calculDomaine) {
-		CalculDomaine retourM = new CalculDomaine();
-		double produit = calculDomaine.getNombre1() * calculDomaine.getNombre2();
-		String produitTexte = Double.toString(produit);
-		retourM.setResultat(produit);
-		retourM.setResultatTexte(produitTexte);
-		return retourM;
+		calculDomaine.setResultat(calculDomaine.getNombre1() * calculDomaine.getNombre2());
+		calculDomaine.setResultatTexte(Double.toString(calculDomaine.getResultat()));
+		return calculDomaine;
 	}
 
 	public CalculDomaine division(CalculDomaine calculDomaine) {
-		CalculDomaine retourD = new CalculDomaine();
-		double quotient;
-		String quotientTexte;
-		if(calculDomaine.getNombre2()==0) {
-			retourD.setResultat(0);
-			retourD.setResultatTexte("erreur : div/0");
+		if (calculDomaine.getNombre2() == 0) {
+			calculDomaine.setResultat(0);
+			calculDomaine.setResultatTexte("erreur : div/0");
+		} else {
+			calculDomaine.setResultat(calculDomaine.getNombre1() / calculDomaine.getNombre2());
+			calculDomaine.setResultatTexte(Double.toString(calculDomaine.getResultat()));
 		}
-		else {
-			quotient = calculDomaine.getNombre1()/calculDomaine.getNombre2();
-			quotientTexte = Double.toString(quotient);
-			retourD.setResultat(quotient);
-			retourD.setResultatTexte(quotientTexte);
-		}
-			return retourD;	
-}
+		return calculDomaine;
+	}
+	
+	
+	
 }

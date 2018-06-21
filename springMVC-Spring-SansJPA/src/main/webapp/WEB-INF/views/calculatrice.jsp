@@ -13,7 +13,7 @@
 		<h1>Calculatrice</h1>
 		<jsp:include page="calcul.jsp"></jsp:include>
 		<jsp:include page="memoire.jsp"></jsp:include>
-		<jsp:include page="message.jsp"></jsp:include>
+		
 	</div>
 </body>
 </html>
