@@ -1,0 +1,35 @@
+Utilisation:
+
+calcul:
+URL:		http://localhost:8080/WebSerice-Maven-Dao-Spring/calcul/put
+Verbe Http:	PUT
+JSON:		{
+    "nombre1": 1,
+    "operateur": 1,
+    "nombre2": 2,
+    "resultat": 0,
+    "resutatTexte": "0"
+}
+operateur : 1="+", 2="-", 3="*", 4="/"
+
+memorisation:
+URL:		http://localhost:8080/WebSerice-Maven-Dao-Spring/memoire/post
+Verbe Http:	POST
+JSON:		{
+    "id": 0,
+    "memoire": 42,
+    "memoireTexte": "42"
+}
+
+rappel memoire:
+URL:		http://localhost:8080/WebSerice-Maven-Dao-Spring/memoire/get
+Verbe Http:	GET
+
+
+
+
+Technique Java:
+Dans la couche service, plusieurs classes permettent d'implementer l'interface ICalculService utilisee pour realiser les operations
+Ordre logique d'evolution des classes CalculService>CalculServiceLocal>CalculServiceAnonyme>CalculServiceLambda>CalculServiceLambda2
+pour choisir la classe qui sera effectivement utilisee, ajouter "implements ICalculService" e la declaration de la classe voulue et le retirer des autres classes
+pour savoir quelle classe est utilisée lors de l'execution, faire une division par zero (operateur=4, nombre2=0)

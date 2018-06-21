@@ -3,6 +3,21 @@ package service;
 import domaine.CalculDomaine;
 
 // Classe de calcul utilisant des classes locales
+//https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html
+
+//1-methode "addition" utilisant une classe locale
+	//technique 1 : les instructions de traitement sont dans le constructeur de la classe locale
+	//(le constructeur modifie la propriete de la classe locale en faisant le calcul, lors de l'instanciation de la classe locale. On recupere la propriete modifiee avec le getteur)
+
+//2-methode "soustraction" utilisant une classe locale, 2 changements par rapport a l'addition
+	//a) technique 2 : les instructions de traitement sont sont dans une methode de traitement appartenant a la classe locale
+	//b) la classe locale implemente l'interface IOperation (mais pas vraiment utilise)
+
+//3-methode "multiplication" sur le même principe que la methode "soustraction"
+	//optimisation dans le traitement evitant de creer des variables
+
+//4-methode "division" sur la même structure que "multiplication", avec la prise en compte du cas "/0"
+
 public class CalculServiceLocal  {
 
 	public CalculDomaine choixOperateur(CalculDomaine calculDomaine) {
@@ -30,41 +45,56 @@ public class CalculServiceLocal  {
 		return retour;
 	}
 
+	
+	
 	// interface contenant une methode abstraite pour faire une operation
 	interface IOperation {
 		public CalculDomaine calculer(CalculDomaine calcul);
 	}
 
-	// methode d'addition avec une classe locale sans implementer l'interface
-	// et en utilisant le constructeur de la classe locale
+	
+	
+	// methode d'addition avec une classe interne locale
+	// il s'agit d'une classe se trouvant a l'interieur d'une methode
+	// les differentes sortes de classes se trouvant dans d'autres classes sont expliques ici https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
 	public CalculDomaine addition(CalculDomaine calculAdd) {
-		// classe locale
+		// debut de la classe locale
 		class AdditionLocal {
 			// propriété de la classe locale
 			private CalculDomaine calcul;
 
-			// getteur de la classe locale
+			// getteur de la propriete de la classe locale
 			public CalculDomaine getCalcul() {
 				return calcul;
 			}
 
-			// constructeur de la classe locale qui affecte la propriété avec l'argument du
-			// constructeur et fait le calcul
+			// constructeur de la classe locale
+			//affecte la propriété avec l'argument du constructeur, puis fait le calcul
 			public AdditionLocal(CalculDomaine calculIn) {
+				// propriete
 				this.calcul = calculIn;
+				//le traitement se fait ici
+				//modifications des proprietes de l'objet "calcul" qui est une propriete de la classe locale
 				double somme = this.calcul.getNombre1() + this.calcul.getNombre2();
 				String sommeTexte = Double.toString(somme);
 				this.calcul.setResultat(somme);
-				this.calcul.setResutatTexte(sommeTexte);
+				this.calcul.setResultatTexte(sommeTexte);
+			// fin du constructeur de la classe locale
 			}
+		// fin de la classe locale
 		}
-		// apres la classe locale, autres instructions de la méthode "addition":
-		// instanciation de la classe locale et appel de son getteur
+		// apres la fin de la classe locale, on se trouve toujours dans la méthode "addition":
+		//on a donc d'autes autres instructions de la méthode
+		
+		// instanciation de la classe locale
 		AdditionLocal ref = new AdditionLocal(calculAdd);
+		//appel du getteur de la classe locale
 		CalculDomaine retourA = ref.getCalcul();
 		return retourA;
 	}
 
+	
+	
 	// methode de soustraction avec une classe locale qui implemente l'interface
 	// IOperation
 	// et appel de la methode de la classe locale sans passer par le constructeur
@@ -76,7 +106,7 @@ public class CalculServiceLocal  {
 				double difference = calculIn.getNombre1() - calculIn.getNombre2();
 				String differenceTexte = Double.toString(difference);
 				calculIn.setResultat(difference);
-				calculIn.setResutatTexte(differenceTexte);
+				calculIn.setResultatTexte(differenceTexte);
 				return calculIn;
 			}
 		}
@@ -87,6 +117,8 @@ public class CalculServiceLocal  {
 		return retourS;
 	}
 
+	
+	
 	// methode de multiplication avec une classe locale qui implemente l'interface
 	// IOperation
 	// et appel de la methode de la classe locale sans passer par le constructeur
@@ -98,7 +130,7 @@ public class CalculServiceLocal  {
 			// methode de calcul dans la classe locale
 			public CalculDomaine calculer(CalculDomaine calculIn) {
 				calculIn.setResultat(calculIn.getNombre1() * calculIn.getNombre2());
-				calculIn.setResutatTexte(Double.toString(calculIn.getResultat()));
+				calculIn.setResultatTexte(Double.toString(calculIn.getResultat()));
 				return calculIn;
 			}
 		}
@@ -108,6 +140,8 @@ public class CalculServiceLocal  {
 		return ref.calculer(calculMult);
 	}
 
+	
+	
 	// methode de division fonctionnant comme celle de multiplication, avec une
 	// condition dans le traitement
 	public CalculDomaine division(CalculDomaine calculDiv) {
@@ -117,10 +151,10 @@ public class CalculServiceLocal  {
 			public CalculDomaine calculer(CalculDomaine calculIn) {
 				if (calculIn.getNombre2() == 0) {
 					calculIn.setResultat(0);
-					calculIn.setResutatTexte("erreur : div/0 (local)");
+					calculIn.setResultatTexte("erreur : div/0 (local)");
 				} else {
 					calculIn.setResultat(calculIn.getNombre1() / calculIn.getNombre2());
-					calculIn.setResutatTexte(Double.toString(calculIn.getResultat()));
+					calculIn.setResultatTexte(Double.toString(calculIn.getResultat()));
 				}
 				return calculIn;
 			}
