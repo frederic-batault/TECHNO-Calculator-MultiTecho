@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<package name="basicstruts2" extends="struts-default">
+
+		<action name="start" class="presentation.CalculAction"
+			method="demarrer">
+			<result name="success">/Calculatrice.jsp</result>
+		</action>
+
+		<action name="calculer" class="presentation.CalculAction"
+			method="calcul">
+			<result name="success">/Calculatrice.jsp</result>
+		</action>
+
+		<action name="memoriser" class="presentation.CalculAction"
+			method="memoriser">
+			<result name="success">/okMem.jsp</result>
+			<result name="error">/errorMem.jsp</result>
+		</action>
+
+		<action name="afficher" class="presentation.CalculAction"
+			method="afficherMemoire">
+			<result name="success">/Calculatrice.jsp</result>
+			<result name="error">/errorAff.jsp</result>
+		</action>
+
+
+
+	</package>
+
+</struts>
+

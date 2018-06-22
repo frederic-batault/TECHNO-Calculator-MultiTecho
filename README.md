@@ -32,10 +32,10 @@ application avec Struts en front, SpringCore pour la couche de service et les be
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
 > fonctionelle
 
-- "Struts-Maven-SansDao-"
+- "Struts-Maven-"
 application avec Struts en front
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
-> blocage: probleme de type au niveau du formulaire
+> blocage: perte de l'etat des proprietes dans la classe action au debut de l'utilisation d'une methode (probablement instance differente de la classe action lors des utilisations successives de la classe)
 
 - "WebService-Maven-Dao"
 application web-service REST avec une Dao classique (sans jpa)
