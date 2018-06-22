@@ -21,13 +21,14 @@
 
 		<action name="memoriser" class="presentation.CalculAction"
 			method="memoriser">
-			<result name="success">/Calculatrice.jsp</result>
-			<result name="input">/Calculatrice.jsp</result>
+			<result name="success">/okMem.jsp</result>
+			<result name="error">/errorMem.jsp</result>
 		</action>
 
 		<action name="afficher" class="presentation.CalculAction"
 			method="afficherMemoire">
 			<result name="success">/Calculatrice.jsp</result>
+			<result name="error">/errorAff.jsp</result>
 		</action>
 
 

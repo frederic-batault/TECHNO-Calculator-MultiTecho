@@ -30,7 +30,7 @@ Il n'y a pas d'accès à la base de données, une classe permet de fournir des f
 - "Struts-Maven-Spring-SansJPA"
 application avec Struts en front, SpringCore pour la couche de service et les beans
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
-> blocage: problème d'écriture des propriétés de la bean d'action à partir des données obtenues du formulaire
+> fonctionelle
 
 - "Struts-Maven-SansDao-"
 application avec Struts en front

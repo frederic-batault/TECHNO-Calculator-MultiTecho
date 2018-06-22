@@ -41,11 +41,7 @@
 
 	<!-- Bean métier calcul -->
 	<bean id="calculDomaine" class="domaine.CalculDomaine">
-		<constructor-arg type="double" value="0" />
-		<constructor-arg type="int" value="1" />
-		<constructor-arg type="double" value="0" />
-		<constructor-arg type="double" value="0" />
-		<constructor-arg type="String" value="Votre resultat ici" />
+		
 	</bean>
 
 	<!-- Bean métier memoire -->

@@ -1,9 +1,9 @@
 package presentation;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 import domaine.CalculDomaine;
 import domaine.Memoire;
@@ -27,19 +27,16 @@ public class CalculAction {
 	@Autowired
 	private MemoireService refMemoireService;
 
-	private int i = 1;
-	
 	// Constructeurs
 
 	public CalculAction(CalculDomaine refCalculDomaine, CalculService refCalculService, List<Operateur> operateurs,
-			Memoire refMemoire, MemoireService refMemoireService, int i) {
+			Memoire refMemoire, MemoireService refMemoireService) {
 		super();
 		this.refCalculDomaine = refCalculDomaine;
 		this.refCalculService = refCalculService;
 		this.operateurs = operateurs;
 		this.refMemoire = refMemoire;
 		this.refMemoireService = refMemoireService;
-		this.i = i;
 
 	}
 
@@ -89,32 +86,27 @@ public class CalculAction {
 		this.refMemoireService = refMemoireService;
 	}
 
-	public int getI() {
-		return i;
-	}
-
-	public void setI(int i) {
-		this.i = i;
-	}
-
 	// methode de preparation des champs
 
 	public String demarrer() {
+		lister();
+		this.refCalculDomaine = new CalculDomaine(0, 1, 0, 0, "0");
+		return "success";
 
+	}
+
+	public void lister() {
 		// construction de la liste des operateurs proposes
 		this.operateurs = new ArrayList<Operateur>();
 		this.operateurs.add(new Operateur(1, "+"));
 		this.operateurs.add(new Operateur(2, "-"));
 		this.operateurs.add(new Operateur(3, "*"));
 		this.operateurs.add(new Operateur(4, "/"));
-		
-		return "success";
-
 	}
 
 	// methode de calcul
 	public String calcul() {
-		demarrer();
+		lister();
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
 		this.refCalculDomaine.setResultat(retour.getResultat());
 		this.refCalculDomaine.setResultatTexte(retour.getResultatTexte());
@@ -123,17 +115,18 @@ public class CalculAction {
 
 	// methode pour memoriser un resultat
 	public String memoriser() {
+		lister();
 		double resultat;
-		if (this.refCalculDomaine.getResultatTexte().equals("erreur : division par zero")) {
-			resultat = 0;
-		} else {
+		try {
 			resultat = Double.valueOf(this.refCalculDomaine.getResultatTexte());
 		}
-		this.refMemoire.setMemoire(resultat);
-		this.refMemoire.setMemoireTexte(this.refCalculDomaine.getResultatTexte());
+		catch (NumberFormatException e){
+			resultat = 0;
+		}
+		this.refMemoire = new Memoire(resultat, this.refCalculDomaine.getResultatTexte());
 		boolean retour = refMemoireService.memoriser(refMemoire);
 		if (retour == true) {
-
+			
 			return "success";
 		} else {
 
@@ -143,24 +136,15 @@ public class CalculAction {
 
 	// methode pour afficher la memoire dans le champ i
 	public String afficherMemoire() {
-		demarrer();
+		lister();
 		Memoire refMem = refMemoireService.afficherMemoire();
-		double resultat = refMem.getMemoire();
-		switch (this.i) {
-		case 1:
-			this.refCalculDomaine.setNombre1(resultat);
-			this.refCalculDomaine.setNombre2(0);
-			break;
-		case 2:
-			this.refCalculDomaine.setNombre1(0);
-			this.refCalculDomaine.setNombre2(resultat);
-			break;
-		default:
-			this.refCalculDomaine.setNombre1(0);
-			this.refCalculDomaine.setNombre2(0);
-			break;
+		if (refMem.equals(null)) {
+			return "error";
+		} else {
+			this.refCalculDomaine.setNombre1(refMem.getMemoire());
+			this.refCalculDomaine.setNombre2(refMem.getMemoire());
+			return "success";
 		}
-		return "success";
 
 	}
 
