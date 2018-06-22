@@ -12,9 +12,9 @@
 	<h1>Calculatrice</h1>
 
 	<s:form action="calculer">
-		<s:textfield key="{calculAction.refCalculDomaine.nombre1}" />
-		<s:select key="{calculAction.operateur" list="operateurs" listKey="code" listValue="symbole" />
-		<s:textfield key="{calculAction.refCalculDomaine.nombre2}" />
+		<s:textfield key="{calculAction.refCalculDomaine.nombre1}" type="number"/>
+		<s:select key="{calculAction.operateur}" list="operateurs" listKey="code" listValue="symbole" />
+		<s:textfield key="{calculAction.refCalculDomaine.nombre2}" type="number"/>
 		<p>${calculAction.refCalculDomaine.resultatTexte}<p>
 		<s:submit>=</s:submit>
 	</s:form>
