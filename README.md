@@ -20,7 +20,8 @@ Applications:
 - "angular-calculatrice"
 partie front implémentant les fonctionnalités
 les traitements doivent être effectués par un web-service
-> blocage: dans le service, le consommation du web-service ne fonctionne pas
+> fonctionnelle
+>Attention: le web-service consommé doit autoriser les requetes provenant d'autres serveurs (Cross-Origin Ressource Sharing), le WS "WebService-Maven-Spring-SansJPA" contient cette permission
 
 - "SpringMVC-Spring-SansJPA"
 application avec SpringMVC en front, SpringCore pour la couche de service et les beans
