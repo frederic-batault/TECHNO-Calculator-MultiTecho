@@ -42,7 +42,7 @@ public class CalculDomaine {
 		this.resultat = resultat;
 	}
 
-	public String getReslutatTexte() {
+	public String getResultatTexte() {
 		return resultatTexte;
 	}
 
