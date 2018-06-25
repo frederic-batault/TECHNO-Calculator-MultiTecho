@@ -1,0 +1,40 @@
+.container {
+	background-color: RGB(96, 96, 96);
+	color: RGB(255, 255, 192);
+	border-radius: 20px;
+	width: 200px;
+	height: 50px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
+}
+
+.mem, .rappel {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
+	height: 60px;
+}
+
+button {
+	display: inline-flex;
+	margin-top: 1px;
+	background-color: RGB(32, 0, 128);
+	color: RGB(255, 255, 192);
+	border-style: solid, 1px;
+	border-color: RGB(16, 0, 64);
+	border-radius: 5px;
+	height: 20px;
+	width: 200px;
+	position: relative;
+	left: 0px;
+	flex-direction: line;
+	justify-content: space-around;
+	align-items: span;
+	flex-wrap: nowrap;
+}
