@@ -1,5 +1,5 @@
 import {Memoire} from './Memoire';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';

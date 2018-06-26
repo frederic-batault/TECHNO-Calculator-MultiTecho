@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms'; // <-- NgModel lives here
 import {AppComponent} from './app.component';
 import {CalcComponent} from './calc/calc.component';
-import {HttpClientModule} from '@angular/common/http';
-import { MemoireComponent } from './memoire/memoire.component'; // pour webservice
+import {HttpClientModule} from '@angular/common/http'; // pour webservice
+import {MemoireComponent} from './memoire/memoire.component';
 
 @NgModule({
   declarations: [
