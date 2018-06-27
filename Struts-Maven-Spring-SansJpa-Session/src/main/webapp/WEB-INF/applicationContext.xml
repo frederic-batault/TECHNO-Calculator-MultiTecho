@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/">
+
+	<!-- Activation du scan du package controller pour analyse des classes annotées -->
+	<context:component-scan base-package="service" />
+	<context:component-scan
+		base-package="presentation" />
+
+	<mvc:annotation-driven />
+
+	<!-- Bean MemoireService -->
+	<bean id="memoireService" class="service.MemoireService">
+	</bean>
+
+	<!-- Bean CalculService -->
+	<bean id="calculService" class="service.CalculService">
+	</bean>
+
+	<!-- Bean MemoireDao -->
+	<bean id="memoireDao" class="dao.MemoireDao">
+	</bean>
+
+	<!-- Bean CalculAction -->
+	<bean id="calculAction" class="presentation.CalculAction"
+		scope="application">
+		<property name="refCalculService" ref="refCalculService" />
+		<property name="refMemoireService" ref="refMemoireService" />
+	</bean>
+
+	<!-- Bean MemoireAction -->
+	<bean id="memoireAction" class="presentation.MemoireAction"
+		scope="application">
+		<property name="refCalculService" ref="refCalculService" />
+		<property name="refMemoireService" ref="refMemoireService" />
+	</bean>
+
+	<!-- Bean métier calcul -->
+	<bean id="calculDomaine" class="domaine.CalculDomaine">
+
+	</bean>
+
+	<!-- Bean métier memoire -->
+	<bean id="memoire" class="domaine.Memoire">
+		<constructor-arg type="double" value="0" />
+		<constructor-arg type="String"
+			value="pas de valeur memorisee" />
+	</bean>
+
+
+
+</beans>
