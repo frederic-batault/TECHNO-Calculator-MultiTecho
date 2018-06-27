@@ -9,6 +9,16 @@
 	<constant name="struts.custom.i18n.resources" value="global" />
 	<package name="basicstruts2" extends="struts-default">
 
+		<interceptors>
+			<interceptor-stack name="appDefault">
+				<interceptor-ref name="defaultStack">
+					<param name="params.excludeParams">dojo..*,^struts..*,^session..*,^request..*,^application..*,^servlet(Request|Response)..*,parameters...*</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="appDefault" />
+
 		<action name="start" class="presentation.CalculAction"
 			method="demarrer">
 			<result name="success">/Calculatrice.jsp</result>

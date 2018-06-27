@@ -30,6 +30,7 @@
 		</div>
 		<div class="resultat">
 			<p><s:property value="refCalculDomaine.resultatTexte" /></p>
+			
 		</div>
 		<div class="memoire">
 			<s:form action="memoriser">

@@ -13,6 +13,8 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/">
 
+
+
 	<!-- Activation du scan du package controller pour analyse des classes annotées -->
 	<context:component-scan base-package="service" />
 	<context:component-scan

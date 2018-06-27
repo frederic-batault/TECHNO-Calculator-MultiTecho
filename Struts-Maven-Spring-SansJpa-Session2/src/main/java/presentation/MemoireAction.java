@@ -1,23 +1,22 @@
 package presentation;
 
-import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
-
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.opensymphony.xwork2.ActionSupport;
+
 import domaine.CalculDomaine;
 import domaine.Memoire;
-import domaine.Operateur;
 import service.MemoireService;
 
-public class MemoireAction implements SessionAware{
+public class MemoireAction extends ActionSupport implements SessionAware {
 
-	private Map<String, Object> userSession ;
-	
-	private List<Operateur> operateurs;
-	
+	private static final long serialVersionUID = 1L;
+
+	private Map<String, Object> userSession;
+
 	@Autowired
 	private CalculDomaine refCalculDomaine;
 
@@ -29,12 +28,11 @@ public class MemoireAction implements SessionAware{
 
 	// Constructeurs
 
-	public MemoireAction(CalculDomaine refCalculDomaine, Memoire refMemoire, MemoireService refMemoireService, List<Operateur> operateurs) {
+	public MemoireAction(CalculDomaine refCalculDomaine, Memoire refMemoire, MemoireService refMemoireService) {
 		super();
 		this.refMemoire = refMemoire;
 		this.refMemoireService = refMemoireService;
 		this.refCalculDomaine = refCalculDomaine;
-		this.operateurs = operateurs;
 
 	}
 
@@ -70,18 +68,15 @@ public class MemoireAction implements SessionAware{
 
 	@PostConstruct
 	public void init() {
-		this.operateurs = (List<Operateur>) this.userSession.get("operateurs");
+
 		this.refCalculDomaine = (CalculDomaine) this.userSession.get("calcul");
 	}
-	
-	
-	
+
+
 	public void setSession(Map<String, Object> session) {
-		   this.userSession = session ;
-		}
-	
-	
-	
+		this.userSession = session;
+	}
+
 	// methode pour memoriser un resultat
 	public String memoriser() {
 		double resultat;
@@ -109,7 +104,7 @@ public class MemoireAction implements SessionAware{
 		} else {
 			this.refCalculDomaine.setNombre1(refMem.getMemoire());
 			this.refCalculDomaine.setNombre2(refMem.getMemoire());
-			this.userSession.put("calcul",this.refCalculDomaine);
+			this.userSession.put("calcul", this.refCalculDomaine);
 			return "success";
 		}
 

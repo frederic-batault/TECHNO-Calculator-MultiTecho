@@ -8,13 +8,17 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import domaine.CalculDomaine;
 import domaine.Memoire;
 import domaine.Operateur;
 import service.CalculService;
 import service.MemoireService;
 
-public class CalculAction implements SessionAware{
+public class CalculAction extends ActionSupport implements SessionAware{
+
+	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> userSession ;
 	
@@ -85,6 +89,7 @@ public class CalculAction implements SessionAware{
 		this.refCalculDomaine =(CalculDomaine) this.userSession.get("calcul"); //recuperation en session d'un calcul (provenant potentiellement de la memoire)
 		if(this.refCalculDomaine == null) {
 			this.refCalculDomaine = new CalculDomaine(0, 1, 0, 0, "0");
+			this.userSession.put("calcul",this.refCalculDomaine); // mise en session du calcul contenant des zeros
 		}
 				
 		
