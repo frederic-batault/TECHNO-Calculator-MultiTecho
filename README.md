@@ -34,6 +34,11 @@ application avec Struts en front, SpringCore pour la couche de service et les be
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
 > fonctionelle
 
+- "Struts-Maven-Spring-SansJPA-Session2"
+application comme "Struts-Maven-Spring-SansJPA", avec 2 classes action separees pour le calcul et la memorisation/rappel-memoire.
+les informations sont passees d'une classe a l'autre par de la mise en session (utilisation de la session avec Struts2 : interface SessionAware)
+> blocage : la mise en session fonctionne pour la classe CalculAction mais pas pour la classe MemoireAction (userSession pas attruibue a partir de la session http)
+
 - "Struts-Maven-"
 application avec Struts en front
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
