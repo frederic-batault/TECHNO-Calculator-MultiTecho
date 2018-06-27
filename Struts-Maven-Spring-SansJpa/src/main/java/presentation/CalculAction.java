@@ -143,6 +143,8 @@ public class CalculAction {
 		} else {
 			this.refCalculDomaine.setNombre1(refMem.getMemoire());
 			this.refCalculDomaine.setNombre2(refMem.getMemoire());
+			this.refCalculDomaine.setResultat(0);
+			this.refCalculDomaine.setResultatTexte("0");
 			return "success";
 		}
 
