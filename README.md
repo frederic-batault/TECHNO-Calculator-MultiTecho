@@ -39,6 +39,10 @@ application comme "Struts-Maven-Spring-SansJPA", avec 2 classes action separees 
 les informations sont passees d'une classe a l'autre par de la mise en session (utilisation de la session avec Struts2 : interface SessionAware)
 > fonctionelle
 
+- "Struts-Weld-Maven-Spring-SansJpa-Session"
+application comme "Struts-Maven-Spring-SansJPA-Session2", avec le conteneur de beans et l'injection de dependance assures par CDI
+> blocage : l'injection de dependance ne fonctionne pas (notamment la classe CalculService n'est pas injectee dans CalculAction : la propriete refCalculService n'est pas instanciee quand ion clique sur =)
+
 - "Struts-Maven-"
 application avec Struts en front
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
