@@ -19,7 +19,7 @@
 			<s:form action="calculer">
 				<s:textfield key="refCalculDomaine.nombre1" label="nombre1"
 					type="number" />
-				<s:select key="refCalculDomaine.operateur" list="operateurs"
+				<s:select key="refCalculDomaine.operateur" list="#session.operateurs"
 					listKey="code" listValue="symbole" label="operation" type="number" />
 				<s:textfield key="refCalculDomaine.nombre2" label="nombre2"
 					type="number" />

@@ -12,7 +12,7 @@ Fonctionalités:
     - soit l'utilisateur peut choisir si la valeur récupérée est écrite comme nombre de départ pour un nouveau calcul avec une position au choix
     - soit la valeur rappelée est affichée dans un champ dédié
     - soit la valeur rappelée est inscrite dans la zone d'affichage du resultat du calcul
-
+	- soit la la valeur est inscrite dans les deux champs d'entree des nombres du calcul (l'utilisateur peut alors la remplacer dans le champ ou ilm ne souhaite pas utiliser la valeur issue de la memoire)
 
 
 Applications:
@@ -21,7 +21,7 @@ Applications:
 partie front implémentant les fonctionnalités
 les traitements doivent être effectués par un web-service
 > fonctionnelle pour les calculs
->Attention: le web-service consommé doit autoriser les requetes provenant d'autres serveurs (Cross-Origin Ressource Sharing), le WS "WebService-Maven-Spring-SansJPA" contient cette permission
+> Attention: le web-service consommé doit autoriser les requetes provenant d'autres serveurs (Cross-Origin Ressource Sharing), le WS "WebService-Maven-Spring-SansJPA" contient cette permission
 > blocage pour la memorisation/rappel-memoire : probleme d'import ?
 
 - "SpringMVC-Spring-SansJPA"
@@ -37,7 +37,7 @@ Il n'y a pas d'accès à la base de données, une classe permet de fournir des f
 - "Struts-Maven-Spring-SansJPA-Session2"
 application comme "Struts-Maven-Spring-SansJPA", avec 2 classes action separees pour le calcul et la memorisation/rappel-memoire.
 les informations sont passees d'une classe a l'autre par de la mise en session (utilisation de la session avec Struts2 : interface SessionAware)
-> blocage : la mise en session fonctionne pour la classe CalculAction mais pas pour la classe MemoireAction (userSession pas attruibue a partir de la session http)
+> fonctionelle
 
 - "Struts-Maven-"
 application avec Struts en front

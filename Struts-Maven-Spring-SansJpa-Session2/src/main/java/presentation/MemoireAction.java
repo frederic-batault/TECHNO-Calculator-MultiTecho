@@ -1,12 +1,9 @@
 package presentation;
 
 import java.util.Map;
-import javax.annotation.PostConstruct;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import domaine.CalculDomaine;
 import domaine.Memoire;
 import service.MemoireService;
@@ -66,7 +63,7 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 		this.refMemoireService = refMemoireService;
 	}
 
-	@PostConstruct
+	
 	public void init() {
 
 		this.refCalculDomaine = (CalculDomaine) this.userSession.get("calcul");
@@ -79,6 +76,7 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 
 	// methode pour memoriser un resultat
 	public String memoriser() {
+		init();
 		double resultat;
 		try {
 			resultat = Double.valueOf(this.refCalculDomaine.getResultatTexte());
@@ -98,6 +96,7 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 
 	// methode pour afficher la memoire dans le champ i
 	public String afficherMemoire() {
+		init();
 		Memoire refMem = refMemoireService.afficherMemoire();
 		if (refMem.equals(null)) {
 			return "error";

@@ -4,12 +4,9 @@ package presentation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import domaine.CalculDomaine;
 import domaine.Memoire;
 import domaine.Operateur;
@@ -81,6 +78,8 @@ public class CalculAction extends ActionSupport implements SessionAware{
 
 	
 	
+	
+	
 	// methode de preparation des champs
 
 	public String demarrer() {
@@ -97,6 +96,7 @@ public class CalculAction extends ActionSupport implements SessionAware{
 
 	}
 
+
 	public void lister() {
 		// construction de la liste des operateurs proposes
 		this.operateurs = new ArrayList<Operateur>();
@@ -111,7 +111,6 @@ public class CalculAction extends ActionSupport implements SessionAware{
 	
 	// methode de calcul
 	public String calcul() {
-		lister();
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
 		this.refCalculDomaine.setResultat(retour.getResultat());
 		this.refCalculDomaine.setResultatTexte(retour.getResultatTexte());
