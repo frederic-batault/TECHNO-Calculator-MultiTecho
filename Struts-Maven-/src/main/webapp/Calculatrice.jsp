@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+<link rel="stylesheet" href="css/style.css">
 <title>Calculatrice</title>
 <s:head />
 </head>
@@ -16,13 +16,12 @@
 		</div>
 		<div class="entree">
 			<s:form action="calculer">
-				<s:textfield key="refCalculDomaine.nombre1"
-					label="nombre1" type="number"/>
-				<s:select key="refCalculDomaine.operateur"
-					list="operateurs" listKey="code" listValue="symbole"
-					label="operation" type="number"/>
-				<s:textfield key="refCalculDomaine.nombre2"
-					label="nombre2" type="number"/>
+				<s:textfield key="refCalculDomaine.nombre1" label="nombre1"
+					type="number" />
+				<s:select key="refCalculDomaine.operateur" list="operateurs"
+					listKey="code" listValue="symbole" label="operation" type="number" />
+				<s:textfield key="refCalculDomaine.nombre2" label="nombre2"
+					type="number" />
 				<s:submit value="=" />
 
 			</s:form>
@@ -32,12 +31,13 @@
 			<s:property value="refCalculDomaine.resultatTexte" />
 		</div>
 		<div class="memoire">
+			
 			<s:form action="memoriser">
-				<s:submit value="MEM"/>
+				<s:submit value="MEM" />
 			</s:form>
 
 			<s:form action="afficher">
-				<s:submit value="MR"/>
+				<s:submit value="MR" />
 			</s:form>
 		</div>
 	</div>
