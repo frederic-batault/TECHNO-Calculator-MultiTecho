@@ -1,26 +1,32 @@
 package presentation;
 import java.util.Map;
+
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import domaine.CalculDomaine;
 import domaine.Memoire;
+import service.IMemoireService;
 import service.MemoireService;
 
+@SessionScoped @Named("memoireAction")
 public class MemoireAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> userSession;
 
-	@Inject
+	
 	private CalculDomaine refCalculDomaine;
 
-	@Inject
+	
 	private Memoire refMemoire;
 
 	@Inject
-	private MemoireService refMemoireService;
+	private IMemoireService refMemoireService;
 
 	// Constructeurs
 
@@ -54,14 +60,11 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 		this.refMemoire = refMemoire;
 	}
 
-	public MemoireService getRefMemoireService() {
-		return refMemoireService;
+	public void setSession(Map<String, Object> session) {
+		this.userSession = session;
 	}
-
-	public void setRefMemoireService(MemoireService refMemoireService) {
-		this.refMemoireService = refMemoireService;
-	}
-
+	
+	
 	
 	public void init() {
 
@@ -69,10 +72,7 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 	}
 
 
-	public void setSession(Map<String, Object> session) {
-		this.userSession = session;
-	}
-
+	
 	// methode pour memoriser un resultat
 	public String memoriser() {
 		init();

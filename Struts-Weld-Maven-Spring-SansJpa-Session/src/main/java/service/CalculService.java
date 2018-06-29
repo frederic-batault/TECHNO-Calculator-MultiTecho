@@ -6,7 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import domaine.CalculDomaine;
 
-@Named
+@Named("calculService")
 @SessionScoped
 public class CalculService implements Serializable, ICalculService{
 

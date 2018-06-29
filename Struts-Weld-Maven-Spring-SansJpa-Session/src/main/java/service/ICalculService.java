@@ -1,10 +1,9 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-
+import javax.enterprise.context.SessionScoped;
 import domaine.CalculDomaine;
 
-@Qualifier
+@SessionScoped
 public interface ICalculService {
 
 	public CalculDomaine choixOperateur(CalculDomaine calculDomaine);

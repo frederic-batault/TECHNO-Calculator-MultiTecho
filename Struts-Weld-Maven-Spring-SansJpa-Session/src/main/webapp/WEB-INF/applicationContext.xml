@@ -24,6 +24,7 @@
 
 	<!-- Bean MemoireService -->
 	<bean id="memoireService" class="service.MemoireService">
+		<property name="memoireDao" ref="memoireDao" />
 	</bean>
 
 	<!-- Bean CalculService -->
@@ -38,13 +39,13 @@
 	<bean id="calculAction" class="presentation.CalculAction"
 		scope="application">
 		<property name="refCalculService" ref="refCalculService" />
-		<property name="refMemoireService" ref="refMemoireService" />
+
 	</bean>
 
 	<!-- Bean MemoireAction -->
 	<bean id="memoireAction" class="presentation.MemoireAction"
 		scope="application">
-		<property name="refCalculService" ref="refCalculService" />
+
 		<property name="refMemoireService" ref="refMemoireService" />
 	</bean>
 

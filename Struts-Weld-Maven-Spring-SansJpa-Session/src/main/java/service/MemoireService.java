@@ -5,17 +5,38 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import dao.IMemoireDao;
 import dao.MemoireDao;
 import domaine.Memoire;
 
-@Named
+@Named("memoireService")
 @SessionScoped
-public class MemoireService implements Serializable{
+public class MemoireService implements IMemoireService, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
-	MemoireDao memoireDao;
+	IMemoireDao memoireDao;
+
+	// constucteurs
+	public MemoireService(MemoireDao memoireDao) {
+		super();
+		this.memoireDao = memoireDao;
+	}
+
+	public MemoireService() {
+		super();
+	}
+
+	// getters et setters
+	public IMemoireDao getMemoireDao() {
+		return memoireDao;
+	}
+
+	public void setMemoireDao(MemoireDao memoireDao) {
+		this.memoireDao = memoireDao;
+	}
 
 	// methode d'enregistrement sous les 2 types
 	public boolean memoriser(Memoire refMemoire) {
