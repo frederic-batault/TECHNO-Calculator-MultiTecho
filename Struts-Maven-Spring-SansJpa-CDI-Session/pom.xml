@@ -3,15 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.gtm</groupId>
-	<artifactId>Struts-Weld-Maven-Spring-SansJpa-Session</artifactId>
+	<artifactId>Struts-Maven-Spring-SansJpa-CDI-Session</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1</version>
-	<name>Struts-Weld-Maven-Spring-SansJpa-Session</name>
+	<name>Struts-Maven-Spring-SansJpa-CDI-Session</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -35,11 +35,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.0.5.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
 			<version>5.0.5.RELEASE</version>
 		</dependency>
 		<!-- STRUTS -->
@@ -77,7 +72,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>Struts-Weld-Maven-Spring-SansJpa-Session</finalName>
+		<finalName>Struts-Maven-Spring-SansJpa-CDI-Session</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
