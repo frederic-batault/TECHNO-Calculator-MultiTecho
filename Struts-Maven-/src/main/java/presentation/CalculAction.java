@@ -1,44 +1,37 @@
 package presentation;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
-
-
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.inject.Inject;
 import domaine.CalculDomaine;
 import domaine.Memoire;
 import domaine.Operateur;
 import service.CalculService;
 import service.MemoireService;
 
-public class CalculAction {
+public class CalculAction extends ActionSupport implements ICalculAction {
 
-	
+	private static final long serialVersionUID = 1L;
+
 	private CalculDomaine refCalculDomaine;
 
-	
-	private CalculService refCalculService = new CalculService();
+	@Inject("calculService")
+	private CalculService refCalculService;
 
 	private List<Operateur> operateurs;
 
-	
 	private Memoire refMemoire;
 
-	
-	private MemoireService refMemoireService = new MemoireService();
+	private MemoireService refMemoireService;
 
 	// Constructeurs
 
-	public CalculAction(CalculDomaine refCalculDomaine, CalculService refCalculService, List<Operateur> operateurs,
-			Memoire refMemoire, MemoireService refMemoireService) {
+	public CalculAction(CalculDomaine refCalculDomaine, List<Operateur> operateurs, Memoire refMemoire) {
 		super();
 		this.refCalculDomaine = refCalculDomaine;
-		this.refCalculService = refCalculService;
 		this.operateurs = operateurs;
 		this.refMemoire = refMemoire;
-		this.refMemoireService = refMemoireService;
-
 	}
 
 	public CalculAction() {
@@ -55,14 +48,6 @@ public class CalculAction {
 		this.refCalculDomaine = refCalculDomaine;
 	}
 
-	public CalculService getRefCalculService() {
-		return refCalculService;
-	}
-
-	public void setRefCalculService(CalculService refCalculService) {
-		this.refCalculService = refCalculService;
-	}
-
 	public List<Operateur> getOperateurs() {
 		return operateurs;
 	}
@@ -77,14 +62,6 @@ public class CalculAction {
 
 	public void setRefMemoire(Memoire refMemoire) {
 		this.refMemoire = refMemoire;
-	}
-
-	public MemoireService getRefMemoireService() {
-		return refMemoireService;
-	}
-
-	public void setRefMemoireService(MemoireService refMemoireService) {
-		this.refMemoireService = refMemoireService;
 	}
 
 	// methode de preparation des champs
@@ -108,6 +85,7 @@ public class CalculAction {
 	// methode de calcul
 	public String calcul() {
 		lister();
+
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
 		this.refCalculDomaine.setResultat(retour.getResultat());
 		this.refCalculDomaine.setResultatTexte(retour.getResultatTexte());
@@ -117,17 +95,17 @@ public class CalculAction {
 	// methode pour memoriser un resultat
 	public String memoriser() {
 		lister();
+		this.refMemoireService = new MemoireService();
 		double resultat;
 		try {
 			resultat = Double.valueOf(this.refCalculDomaine.getResultatTexte());
-		}
-		catch (NumberFormatException e){
+		} catch (NumberFormatException e) {
 			resultat = 0;
 		}
 		this.refMemoire = new Memoire(resultat, this.refCalculDomaine.getResultatTexte());
 		boolean retour = refMemoireService.memoriser(refMemoire);
 		if (retour == true) {
-			
+
 			return "success";
 		} else {
 
@@ -138,6 +116,7 @@ public class CalculAction {
 	// methode pour afficher la memoire dans le champ i
 	public String afficherMemoire() {
 		lister();
+		this.refMemoireService = new MemoireService();
 		Memoire refMem = refMemoireService.afficherMemoire();
 		if (refMem.equals(null)) {
 			return "error";

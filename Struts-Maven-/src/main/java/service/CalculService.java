@@ -3,7 +3,7 @@ package service;
 import domaine.CalculDomaine;
 
 
-public class CalculService {
+public class CalculService implements ICalculService{
 
 	public CalculDomaine choixOperateur(CalculDomaine calculDomaine) {
 		CalculDomaine retour;

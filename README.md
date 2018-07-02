@@ -46,7 +46,7 @@ application comme "Struts-Maven-Spring-SansJPA-Session2", avec le conteneur de b
 - "Struts-Maven-"
 application avec Struts en front
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
-> blocage: perte de l'etat des proprietes dans la classe action au debut de l'utilisation d'une methode (probablement instance differente de la classe action lors des utilisations successives de la classe)
+> blocage: la configuration des beans dans struts.xml ne fonctionne pas
 
 - "WebService-Maven-Dao"
 application web-service REST avec une Dao classique (sans jpa)
