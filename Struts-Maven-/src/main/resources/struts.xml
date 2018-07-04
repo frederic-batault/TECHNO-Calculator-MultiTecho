@@ -5,21 +5,20 @@
 
 <struts>
 
-	<bean type="presentation.CalculAction" name="calculAction"
+	<bean type="presentation.ICalculAction" name="calculAction"
 		class="presentation.CalculAction" scope="session" />
 
 	<bean type="service.CalculService" name="calculService"
 		class="service.CalculService" scope="session" />
 
-	<bean type="service.MemoireService" name="memoireService"
-		class="service.MemoireService" scope="session" />
+	<bean name="memoireService" class="service.MemoireService"
+		scope="session" />
 
-	<bean type="dao.MemoireDao" name="memoireDao"
-		class="dao.MemoireDao" scope="session" />
+	<bean name="memoireDao" class="dao.MemoireDao" scope="session" />
 
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="global" />
-	
+
 	<package name="basicstruts2" extends="struts-default">
 
 		<action name="start" class="presentation.CalculAction"

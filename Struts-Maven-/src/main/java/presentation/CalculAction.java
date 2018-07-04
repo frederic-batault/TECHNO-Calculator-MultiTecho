@@ -2,13 +2,8 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.inject.Container;
 import com.opensymphony.xwork2.inject.Inject;
-import com.opensymphony.xwork2.inject.Scope.Strategy;
-
 import domaine.CalculDomaine;
 import domaine.Memoire;
 import domaine.Operateur;
@@ -30,9 +25,6 @@ public class CalculAction extends ActionSupport implements ICalculAction {
 
 	private MemoireService refMemoireService;
 
-	@Inject
-	private Container container;
-	
 	// Constructeurs
 
 	public CalculAction(CalculDomaine refCalculDomaine, List<Operateur> operateurs, Memoire refMemoire) {
@@ -72,7 +64,6 @@ public class CalculAction extends ActionSupport implements ICalculAction {
 		this.refMemoire = refMemoire;
 	}
 
-	
 	// methode de preparation des champs
 
 	public String demarrer() {

@@ -10,6 +10,7 @@
 <s:head />
 </head>
 <body>
+
 	<div class="container">
 		<div class="titre">
 			<h1>Calculatrice</h1>
@@ -23,23 +24,22 @@
 				<s:textfield key="refCalculDomaine.nombre2" label="nombre2"
 					type="number" />
 				<s:submit value="=" />
-
 			</s:form>
-
 		</div>
+
 		<div class="resultat">
 			<s:property value="refCalculDomaine.resultatTexte" />
 		</div>
+
 		<div class="memoire">
-			
 			<s:form action="memoriser">
 				<s:submit value="MEM" />
 			</s:form>
-
 			<s:form action="afficher">
 				<s:submit value="MR" />
 			</s:form>
 		</div>
+
 	</div>
 </body>
 </html>

@@ -46,7 +46,8 @@ application comme "Struts-Maven-Spring-SansJPA-Session2", avec le conteneur de b
 - "Struts-Maven-"
 application avec Struts en front
 Il n'y a pas d'accès à la base de données, une classe permet de fournir des faux services de dao
-> blocage: la configuration des beans dans struts.xml ne fonctionne pas
+Utilise le conteneur de beans de struts
+> blocage: la configuration des beans dans struts.xml (pour regler le scope a "session" ne fonctionne pas
 
 - "WebService-Maven-Dao"
 application web-service REST avec une Dao classique (sans jpa)

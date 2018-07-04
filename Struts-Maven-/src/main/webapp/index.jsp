@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
 	<a href="<s:url action="start"/>">Cliquer ici</a>
+
 </body>
 </html>
