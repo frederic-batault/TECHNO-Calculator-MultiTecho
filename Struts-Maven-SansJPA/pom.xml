@@ -42,11 +42,7 @@
 			<artifactId>struts2-config-browser-plugin</artifactId>
 			<version>2.5.16</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-spring-plugin</artifactId>
-			<version>2.5.16</version>
-		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>Struts-Maven-SansJPA</finalName>

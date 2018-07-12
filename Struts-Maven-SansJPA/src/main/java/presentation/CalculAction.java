@@ -106,6 +106,7 @@ public class CalculAction {
 	// methode de calcul
 	public String calcul() {
 		lister();
+		this.refCalculService = new CalculService();
 		CalculDomaine retour = this.refCalculService.choixOperateur(this.refCalculDomaine);
 		this.refCalculDomaine.setResultat(retour.getResultat());
 		this.refCalculDomaine.setResultatTexte(retour.getResultatTexte());
@@ -122,6 +123,8 @@ public class CalculAction {
 		catch (NumberFormatException e){
 			resultat = 0;
 		}
+		
+		this.refMemoireService = new MemoireService();
 		this.refMemoire = new Memoire(resultat, this.refCalculDomaine.getResultatTexte());
 		boolean retour = refMemoireService.memoriser(refMemoire);
 		if (retour == true) {
@@ -136,6 +139,7 @@ public class CalculAction {
 	// methode pour afficher la memoire dans le champ i
 	public String afficherMemoire() {
 		lister();
+		this.refMemoireService = new MemoireService();
 		Memoire refMem = refMemoireService.afficherMemoire();
 		if (refMem.equals(null)) {
 			return "error";
