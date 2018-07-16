@@ -71,6 +71,17 @@
 			ref="entityManagerFactory" />
 	</bean>
 
+	<bean id="myDriverManagerDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${dbDriver}" />
+		<property name="url" value="${dbUrl}" />
+		<property name="username" value="${dbUsername}" />
+		<property name="password" value="${dbPassword}" />
+	</bean>
+
+	<context:property-placeholder
+		location="src/main/java/repository.dbInfo.properties" />
+
 	<!-- Activation du scan du package repository pour analyser les interfaces 
 		et générer leurs implémentations CRUD++ -->
 	<jpa:repositories base-package="repository" />
