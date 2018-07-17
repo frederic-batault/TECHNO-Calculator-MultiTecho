@@ -87,8 +87,7 @@ public class CalculAction extends ActionSupport implements SessionAware{
 		this.userSession.put("operateurs",this.operateurs); // mise en session de la liste des operateurs
 		this.refCalculDomaine =(CalculDomaine) this.userSession.get("calcul"); //recuperation en session d'un calcul (provenant potentiellement de la memoire)
 		if(this.refCalculDomaine == null) {
-			this.refCalculDomaine = new CalculDomaine(0, 1, 0, 0, "0");
-			this.userSession.put("calcul",this.refCalculDomaine); // mise en session du calcul contenant des zeros
+			zero();
 		}
 				
 		
@@ -104,6 +103,7 @@ public class CalculAction extends ActionSupport implements SessionAware{
 		this.operateurs.add(new Operateur(2, "-"));
 		this.operateurs.add(new Operateur(3, "*"));
 		this.operateurs.add(new Operateur(4, "/"));
+		this.userSession.put("operateurs",this.operateurs); // mise en session de la liste des operateurs
 	}
 
 	
@@ -118,7 +118,15 @@ public class CalculAction extends ActionSupport implements SessionAware{
 		return "success";
 	}
 
-	
-	
+		
+	public String zero() {
+		lister();
+		this.userSession.put("operateurs",this.operateurs); // mise en session de la liste des operateurs
+		this.refCalculDomaine =(CalculDomaine) this.userSession.get("calcul"); //recuperation en session d'un calcul (provenant potentiellement de la memoire)
+		this.refCalculDomaine = new CalculDomaine(0, 1, 0, 0, "0");
+		this.userSession.put("calcul",this.refCalculDomaine); // mise en session du calcul contenant des zeros
+		return "success";
+
+	}
 	
 }

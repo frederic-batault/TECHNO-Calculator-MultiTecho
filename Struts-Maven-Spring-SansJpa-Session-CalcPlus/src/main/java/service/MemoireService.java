@@ -33,4 +33,12 @@ public class MemoireService {
 		Memoire refmemoire2 = new Memoire(resultatDouble, resultatTexte);
 		return refmemoire2;
 	}
+	
+	//methode d'effacement (remise a zero)
+	public boolean effacer() {
+		Memoire zero = new Memoire(0,"0 (memoire effacee)");
+		zero.setId(1);
+		boolean efface = memoireDao.memoriser(zero);
+		return efface;
+	}
 }

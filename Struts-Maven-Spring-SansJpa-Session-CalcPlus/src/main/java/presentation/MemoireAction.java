@@ -63,12 +63,10 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 		this.refMemoireService = refMemoireService;
 	}
 
-	
 	public void init() {
 
 		this.refCalculDomaine = (CalculDomaine) this.userSession.get("calcul");
 	}
-
 
 	public void setSession(Map<String, Object> session) {
 		this.userSession = session;
@@ -94,7 +92,7 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 		}
 	}
 
-	// methode pour afficher la memoire dans le champ i
+	// methode pour afficher la memoire
 	public String afficherMemoire() {
 		init();
 		Memoire refMem = refMemoireService.afficherMemoire();
@@ -105,6 +103,26 @@ public class MemoireAction extends ActionSupport implements SessionAware {
 			this.refCalculDomaine.setNombre2(refMem.getMemoire());
 			this.userSession.put("calcul", this.refCalculDomaine);
 			return "success";
+		}
+
+	}
+
+	// methode pour afficher la memoire et l'effacer
+	public String afficherEffacer() {
+		init();
+		Memoire refMem = refMemoireService.afficherMemoire();
+		if (refMem.equals(null)) {
+			return "error";
+		} else {
+			this.refCalculDomaine.setNombre1(refMem.getMemoire());
+			this.refCalculDomaine.setNombre2(refMem.getMemoire());
+			this.userSession.put("calcul", this.refCalculDomaine);
+			boolean eff = this.refMemoireService.effacer();
+			if (eff == true) {
+				return "success";
+			} else {
+				return "error";
+			}
 		}
 
 	}

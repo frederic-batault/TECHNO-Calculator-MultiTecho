@@ -41,8 +41,17 @@
 			<result name="error">/errorAff.jsp</result>
 		</action>
 
+		<action name="afficherEffacer"
+			class="presentation.MemoireAction" method="afficherEffacer">
+			<result name="success">/Calculatrice.jsp</result>
+			<result name="error">/errorAff.jsp</result>
+		</action>
 
-
+		<action name="raz" class="presentation.CalculAction"
+			method="zero">
+			<result name="success">/Calculatrice.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>
